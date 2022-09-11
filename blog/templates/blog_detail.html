@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 
-{% block comments_page %}
-<h1>{{ blog.name }}</h1>
-    <div>
-        <h2> {{ blog.title }} </h2>
-        <p> {{ blog.body }} </p>
+{% block page_comments %}
+    <br>
+    <div class="panel-body">
+        {{ post.name }}
+        {{ post.body }}
     </div>
-{% endblock comments_page %}
+    <br>
+    <h3> >>>Comments </h3>
+    <div>
+        <h4> {{ comment.author }} </h4>
+        <p> {{ comment.body }} </p>
+        <p> {{ comment.created_on }} </p>
+    </div>
+{% endblock %}

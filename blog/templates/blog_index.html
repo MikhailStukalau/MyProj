@@ -3,18 +3,23 @@
 {% block blog_content %}
 <h1 align="center">This is my little blog</h1>
     {% for blog in posts %}
-    <h1>{{ blog.name }}</h1>
+    
     <div>
         <h2><a href="{% url 'blog_detail' blog.pk %}"> {{ blog.title }} </a></h2>
-        <p> {{ blog.body }} </p>
+        <p> {{ blog.body | slice:":400" }}... </p>
+        <small>
         <div class="row">
-
             <p> Create: {{ blog.created_on }} </p>
             <div class="col-md-4 col-md-offset-4">
             <p> Update: {{ blog.last_modified }} </p>
             </div>
         </div>
-        <p> {{ blog.categories }} </p>
+        {% for category in blog.categories.all %}
+        <a href=""> {{ category.name }} </a>
+        {% endfor %}
+        </small>
     </div>
-    {% endfor blog %}
+    {% endfor %}
+
 {% endblock blog_content %}
+
